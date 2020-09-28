@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-
     float movespeed = 4.0f;
     float spinspeed = 180f;
 
@@ -15,7 +14,7 @@ public class PlayerMove : MonoBehaviour
     bool bJumpup = false;
     bool bDown = false;
 
-    //Transform target;
+    public Transform target;
 
     void Start()
     {
@@ -24,18 +23,11 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        Vector3 pos_old = transform.position;
-
         //좌표이동
         if (Input.GetKey(KeyCode.RightArrow)) transform.position += Vector3.right * movespeed * Time.deltaTime;
         if (Input.GetKey(KeyCode.LeftArrow)) transform.position += Vector3.left * movespeed * Time.deltaTime;
         if (Input.GetKey(KeyCode.UpArrow)) transform.position += Vector3.forward * movespeed * Time.deltaTime;
         if (Input.GetKey(KeyCode.DownArrow)) transform.position += Vector3.back * movespeed * Time.deltaTime;
-
-        //방향전환
-        //Vector3 dir = transform.position - pos_old; dir.y = 0;
-        //Vector3 pos = transform.position + dir * 1;
-        //transform.LookAt(pos);
     }
 
     void OnTriggerEnter(Collider other) //충돌판정에는 양쪽다 collider 필요, 한쪽엔 rigibody
@@ -48,7 +40,15 @@ public class PlayerMove : MonoBehaviour
 }
 
 /*    
-    Vector3 pos_old = transform.position;
+    //좌표이동
+    if (Input.GetKey(KeyCode.RightArrow)) transform.position += Vector3.right * movespeed * Time.deltaTime;
+    if (Input.GetKey(KeyCode.LeftArrow))  transform.position += Vector3.left * movespeed * Time.deltaTime;
+    if (Input.GetKey(KeyCode.UpArrow))    transform.position += Vector3.forward * movespeed * Time.deltaTime; 
+    if (Input.GetKey(KeyCode.DownArrow))  transform.position += Vector3.back * movespeed * Time.deltaTime;
+*/
+
+/*    
+    Vector3 pos_old = transform.position; //방향계산을 위해 이전 좌표 저장 
 
     //좌표이동
     if (Input.GetKey(KeyCode.RightArrow)) transform.position += Vector3.right * movespeed * Time.deltaTime;
@@ -63,16 +63,24 @@ public class PlayerMove : MonoBehaviour
 */
 
 /*   
+    //좌우 회전
+    if (Input.GetKey(KeyCode.RightArrow)) transform.Rotate(Vector3.up * spinspeed * Time.deltaTime);
+    if (Input.GetKey(KeyCode.LeftArrow))  transform.Rotate(-Vector3.up * spinspeed * Time.deltaTime);   
     //전진 이동
     if (Input.GetKey(KeyCode.UpArrow))    transform.Translate(Vector3.forward * movespeed * Time.deltaTime);
     if (Input.GetKey(KeyCode.DownArrow))  transform.Translate(-Vector3.forward * movespeed * Time.deltaTime);
-    //좌우 회전
-    if (Input.GetKey(KeyCode.RightArrow)) transform.Rotate(Vector3.up * spinspeed * Time.deltaTime);
-    if (Input.GetKey(KeyCode.LeftArrow))  transform.Rotate(-Vector3.up * spinspeed * Time.deltaTime);
-}
+*/
+
+/*
+    public Transform target; //타겟
+     
+    //타겟 이동
+    transform.LookAt(target.position);
+    transform.Translate(Vector3.forward * movespeed * Time.deltaTime);
+*/
 
 
-
+/*
 //Unity의 회전 및 오리엔테이션
 //https://docs.unity3d.com/kr/current/Manual/QuaternionAndEulerRotationsInUnity.html
 
