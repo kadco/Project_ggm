@@ -95,7 +95,7 @@ public class KCameraController : MonoBehaviour {
 
 		// camera position
 		//_cameraTransform.position = targetPos + currentRotation * Vector3.back * fDistance; 
-		fDistance_cur = Mathf.SmoothDamp(fDistance_cur, fDistance, ref fVelocity,  Time.deltaTime * fSmoothTime);
+		fDistance_cur = Mathf.SmoothDamp(fDistance_cur, fDistance, ref fVelocity, fSmoothTime);
 		_cameraTransform.position = targetPos + currentRotation * Vector3.back * fDistance_cur;
 
 		// camera rotation

@@ -12,8 +12,7 @@ public class Vector3Test : MonoBehaviour
 {
     public Transform tran1;
     public Transform tran2;
-
-    // Start is called before the first frame update
+        
     void Start()
     {
         tran1.position = new Vector3(0, 0, 0);
@@ -30,17 +29,16 @@ public class Vector3Test : MonoBehaviour
         float dist = v3.magnitude;          //길이
         Vector3 dir = v3.normalized;        //방향
 
-        Vector3 v4 = tran1.position * 3;  // 백터 곱하기 //동일한 방향으로 증가
+        Vector3 v4 = tran1.position * 3;  // 벡터 곱하기 //동일한 방향으로 증가
 
         Vector3 dir2 = v3.normalized * 2;                   // 방향 * 초당 이동 거리 = 초당 이동할 거리 벡터
         Vector3 dir3 = v3.normalized * 2 * Time.deltaTime;  // 프레임 기간동안 이동할 거리 벡터
 
-        float dot = Vector3.Dot(tran1.position, tran2.position); print(dot);  //백터의 내적 //두백터의 각도 0이면 직각.
+        float dot = Vector3.Dot(tran1.position, tran2.position); print(dot);  //벡터의 내적 //두백터의 각도 0이면 직각.
 
-        Vector3 cross = Vector3.Cross(tran1.position, tran2.position);      //백터의 외적 //직각인 백터 찾기 
+        Vector3 cross = Vector3.Cross(tran1.position, tran2.position);      //벡터의 외적 //직각인 벡터 찾기 
     }
 
-    // Update is called once per frame
     void Update()
     {
         //float dot = Vector3.Dot(tran1.position, tran2.position); print(dot);
