@@ -10,8 +10,7 @@ public class TestTransform : MonoBehaviour {
 
     //게임오브젝트와 변수 연결
     public GameObject player;
-
-    
+        
 
     void Start ()
     {
