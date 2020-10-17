@@ -9,16 +9,16 @@ public class RocketTest : MonoBehaviour
 
     void Start()
     {
-
     }
-
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject go = Instantiate(rocket);
+            GameObject go = Instantiate(rocket);            
             go.GetComponent<Rocket>().Fire(start_pos.transform);
         }
     }
 }
+
+//GameObject go = (GameObject)Instantiate(Resources.Load("rocket", typeof(GameObject)));

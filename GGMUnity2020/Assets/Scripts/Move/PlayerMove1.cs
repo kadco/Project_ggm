@@ -15,7 +15,6 @@ public class PlayerMove1 : MonoBehaviour // 키보드 이동 //트랜스폼
     float Jumpstarttime;        //점프 시작 시간
     bool bJump = false;    
     bool bJumpup = false;
-
     bool bDown = false;
 
     //Transform target;
@@ -27,7 +26,6 @@ public class PlayerMove1 : MonoBehaviour // 키보드 이동 //트랜스폼
 
     void Update ()
     {
-
         Vector3 pos_old = transform.position;
 
         //이동

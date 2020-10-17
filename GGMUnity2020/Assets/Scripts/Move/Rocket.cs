@@ -13,7 +13,6 @@ public class Rocket : MonoBehaviour {
     {
         transform.position = dir.position;
         transform.rotation = dir.rotation;
-
         Destroy(gameObject, 3.0f);
         bActive = true;
     }

@@ -9,7 +9,7 @@ public class CameraChange : MonoBehaviour
 
     void Start()
     {
-        print(Camera.main.name); // 모두 테그를 MainCamera 로 세팅
+        //print(Camera.main.name); // 모두 테그를 MainCamera 로 세팅
     }
 
     // Update is called once per frame
@@ -23,8 +23,8 @@ public class CameraChange : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            cam1.enabled = false;
             cam2.enabled = true;
+            cam1.enabled = false;            
             print(Camera.main.name);
         }
     }

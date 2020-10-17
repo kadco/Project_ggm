@@ -5,31 +5,31 @@ using UnityEngine;
 public class JumpCtrl : MonoBehaviour
 {
     private Transform _transform;
-    private bool _isJumping;
-    private float _posY;        //오브젝트의 초기 높이
-    private float _gravity;     //중력가속도
-    private float _jumpPower;   //점프력
-    private float _jumpTime;    //점프 이후 경과시간
+    private bool isJumping;
+    private float posY;        //오브젝트의 초기 높이
+    private float gravity;     //중력가속도
+    private float jumpPower;   //점프력
+    private float jumpTime;    //점프 이후 경과시간
 
     void Start()
     {
         _transform = transform;
-        _isJumping = false;
-        _posY = transform.position.y;
-        _gravity = 9.8f;
-        _jumpPower = 7.0f;
-        _jumpTime = 0.0f;
+        isJumping = false;
+        posY = transform.position.y;
+        gravity = 9.8f;
+        jumpPower = 7.0f;
+        jumpTime = 0.0f;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !_isJumping)
+        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
-            _isJumping = true;
-            _posY = _transform.position.y;
+            isJumping = true;
+            posY = _transform.position.y;
         }
 
-        if (_isJumping)
+        if (isJumping)
         {
             Jump();
         }
@@ -37,22 +37,23 @@ public class JumpCtrl : MonoBehaviour
 
     void Jump()
     {
+        //점프시간을 증가시킨다.
+        jumpTime += Time.deltaTime;
+
         //y = -a*t + v 에서 (a: 중력가속도, v: 초기 점프속도) 적분하여 
         //y = (-a/2)*t*t + (v*t) 공식을 얻는다.(t: 점프시간, y: 오브젝트의 높이)
-        
+
         //변화된 높이 height를 기존 높이 _posY에 더한다.
-        float height = (_jumpTime * _jumpTime * (-_gravity) / 2) + (_jumpTime * _jumpPower);
-        _transform.position = new Vector3(_transform.position.x, _posY + height, _transform.position.z);
-        
-        //점프시간을 증가시킨다.
-        _jumpTime += Time.deltaTime;
+        float height = (jumpTime * jumpTime * (-gravity) / 2) + (jumpTime * jumpPower);
+        transform.position = 
+            new Vector3(transform.position.x, posY + height, transform.position.z );
 
         //처음의 높이 보다 더 내려 갔을때 => 점프전 상태로 복귀한다.
         if (height < 0.0f)
         {
-            _isJumping = false;
-            _jumpTime = 0.0f;
-            _transform.position = new Vector3(_transform.position.x, _posY, _transform.position.z);
+            isJumping = false;
+            jumpTime = 0.0f;
+            transform.position = new Vector3(transform.position.x, posY, transform.position.z);
         }
     }
 

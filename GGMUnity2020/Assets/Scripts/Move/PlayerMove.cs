@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    float movespeed = 4.0f;
+    public Transform target; //타겟
 
+    float movespeed = 4.0f;
     float spinspeed = 180f;
     float jumpspeed = 4.0f;     //점프하여 도약하는 속도
     float JumpTime = 0.4f;      //점프하여 도약하는 시간
@@ -21,12 +22,9 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        //좌우 회전
-        if (Input.GetKey(KeyCode.RightArrow)) transform.Rotate(Vector3.up * spinspeed * Time.deltaTime);
-        if (Input.GetKey(KeyCode.LeftArrow)) transform.Rotate(-Vector3.up * spinspeed * Time.deltaTime);
-        //전진 이동
-        if (Input.GetKey(KeyCode.UpArrow)) transform.Translate(Vector3.forward * movespeed * Time.deltaTime);
-        if (Input.GetKey(KeyCode.DownArrow)) transform.Translate(-Vector3.forward * movespeed * Time.deltaTime);
+        //타겟 이동
+        transform.LookAt(target.position);
+        transform.Translate(Vector3.forward * movespeed * Time.deltaTime);
     }
 
 }

@@ -17,6 +17,7 @@ public class TextLoad : MonoBehaviour
         while (line != null)
         {
             Debug.Log(line); //ttt.text = line;
+
             line = sr.ReadLine();            
         }        
     }
