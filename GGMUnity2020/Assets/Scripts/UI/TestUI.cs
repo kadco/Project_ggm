@@ -29,6 +29,8 @@ public class TestUI : MonoBehaviour
         m_slider.onValueChanged.AddListener(delegate { onValueChanged_slider(); });
 
         m_input.onValueChanged.AddListener(delegate { onValueChanged_input(); });
+
+        //m_image.transform.SetAsLastSibling();  //순서변경
     }
 
     void Update()
