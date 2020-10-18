@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameMgr : MonoBehaviour
 {
+    public string ID = "Game";
+
     private static GameMgr instance = null;
     public static GameMgr Instance { ///게임 매니저 인스턴스에 접근할 수 있는 프로퍼티
         get {
