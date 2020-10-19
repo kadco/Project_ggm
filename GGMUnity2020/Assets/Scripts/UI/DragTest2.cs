@@ -19,7 +19,7 @@ public class DragTest2 : MonoBehaviour
 
     public void OnBeginDrag(BaseEventData data)
     {
-        //print("OnDragBegin");
+        print("OnDragBegin");
 
         //드래그 시작 시, 이미지 오브젝트를 하나 생성한다. 
         //m_drag_image = Resources.Load("Image/flag", typeof(Image)) as Image;
