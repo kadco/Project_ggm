@@ -21,7 +21,7 @@ public class MatrixTest : MonoBehaviour
     void DisplayMatrix()
     {
         Matrix4x4 matrix = transform.localToWorldMatrix;
-        matrixTxt1.text = ""+ matrix;
+        matrixTxt1.text = "" + matrix;
         matrixTxt2.text = "" + matrix.inverse;
         matrixTxt3.text = "" + matrix.transpose;
     }
