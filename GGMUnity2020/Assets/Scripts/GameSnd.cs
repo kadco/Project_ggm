@@ -6,14 +6,6 @@
 using UnityEngine;
 using System.Collections;
 
-/*
-	var myAudio : AudioClip;
-	AudioSource kAudioSource;		
-  	if(!audio) AddComponent(AudioSource); 
-  	audio.clip = myAudio; 
-  	audio.volume = 0.5; 
-  	audio.Play(); 
-*/
 public enum eSound : int
 {
     bgm_main = 101,
@@ -33,27 +25,22 @@ public enum eSound : int
 };
 public class GameSnd : MonoBehaviour 
 {				
-	//GameObject kRoot = null;
-	
-	//public float fVolume = 1.0f; 		
-	public float fVolume_bgm = 1.0f;
-	public float fVolume_fx = 1.0f;
+	//GameObject kRoot = null;	
+	//public float fVolume = 1.0f;
+	float fVolume_bgm = 1.0f;
+	float fVolume_fx = 1.0f;
 	
 	public GameObject kBgm = null;
 	
 	ArrayList SourceArray = new ArrayList();
 	ArrayList CloneArray = new ArrayList();
-	
-	ArrayList CooltimeArray = new ArrayList();
-		
+
+
 	private static GameSnd s_instance = null;	
-	public static GameSnd Instance
-    {
-		get 
-	    {
-	    	if (s_instance == null)
-	        {
-				//s_instance = new GameSnd();
+	public static GameSnd Instance {
+		get {
+	    	if (s_instance == null) {
+				//s_instance = new GameSnd(); //.Net
 				s_instance = FindObjectOfType(typeof(GameSnd)) as GameSnd;
 	        }
 	        return s_instance;
@@ -62,8 +49,7 @@ public class GameSnd : MonoBehaviour
 	
 	void Awake () 
 	{
-		if(s_instance != null) 
-		{
+		if(s_instance != null) {
 			//Debug.LogError("Cannot have two instances of GameSnd."); 
 			return; 
 		}
@@ -73,23 +59,17 @@ public class GameSnd : MonoBehaviour
 		//Debug.Log("GameSnd Awake");		
 	}
 
-	// Use this for initialization
 	void Start ()
 	{
-		//kRoot = GameObject.Find("root_sound");
-				
+		//kRoot = GameObject.Find("root_sound");				
 		//kRoot.transform.position = Camera.mainCamera.transform.position;
 		
 		//LoadSoundSource();
-
-		//AddClone( 1 , Vector3(0, 0, 0) );
 	}
 
     /*
-	// Update is called once per frame 
 	void Update () 
 	{
-
 		if( Input.GetKeyDown(KeyCode.Alpha1) )		
 		{	
 			//PlayBGM( (int)eSound.eBgm_Title );			
@@ -98,24 +78,17 @@ public class GameSnd : MonoBehaviour
 		if( Input.GetKeyDown(KeyCode.Alpha2) )
 		{			
 			//PlaySound((int)eSound.eSnd_Attack);
-
-            //play
-            AudioClip   soundClip = Resources.Load("Sound/soundname") as AudioClip;
-            AudioSource audioSource = new AudioSource();
-            audioSource.clip = soundClip;
-            audioSource.Play();
 		}
 
 		if( Input.GetKeyDown(KeyCode.R) )
 		{	
 			RemoveAllClone();			
 		}
-
 	}
 */
 
     //----------------------------------------------
-    public void LoadSource()
+    public void LoadSoundSource()
 	{
         AddSource("bgm_main");
     }   
@@ -130,7 +103,7 @@ public class GameSnd : MonoBehaviour
 		kGO.name = _sound_name;
 		
 		string szPrefab = "";        
-        szPrefab = _sound_name;        
+        szPrefab = _sound_name;
 
         // AudioSource
         //if( kGO.audio == null) 
@@ -186,14 +159,10 @@ public class GameSnd : MonoBehaviour
 	GameObject AddClone(string _sound_name, Vector3 pos )
 	{
 		GameObject kGO = GetSource(_sound_name);
-		if( kGO == null)
-		{			
+		if( kGO == null) {	
 			kGO = AddSource(_sound_name); //없으면 추가
 		}
-		if( kGO )
-		{
-			//kGO.audio.PlayOneShot( kGO.audio.clip );
-						
+		if( kGO ) {					
 			GameObject kGOClone = (GameObject)Instantiate( kGO );
 			kGOClone.transform.position = pos;
 			
@@ -225,10 +194,9 @@ public class GameSnd : MonoBehaviour
 	public void RemoveAll()
 	{
 		//GameObject[] kGOs = GameObject.FindGameObjectsWithTag ("SoundObject");
-		//foreach ( Object obj in kGOs )
-		//	Destroy (obj); 	
+		//foreach ( Object obj in kGOs ) Destroy (obj); 	
 		
-		foreach ( Object obj in CloneArray )
+		foreach ( Object obj in CloneArray )		
 		{
 			if(obj) Destroy (obj); 
 		}
@@ -267,11 +235,20 @@ public class GameSnd : MonoBehaviour
 		//Destroy ( kBgm );
 	}
 
+	public void SetVolumeBGM()
+	{
+		if (kBgm != null)
+		{
+			kBgm.GetComponent<AudioSource>().volume = fVolume_bgm;
+			//kBgm.audio.Play();
+		}
+	}
+
 	// PlaySound  ---------------------------------------------------------------
 
-    public GameObject PlaySound(string _sound_nam)
+	public GameObject PlaySound(string _sound_name)
     {
-        return PlaySound(_sound_nam, Vector3.zero, false, fVolume_fx);
+        return PlaySound(_sound_name, Vector3.zero, false, fVolume_fx);
     }
 
     public GameObject PlaySound(string _sound_name, Vector3 _pos, bool _loop, float _volume )
@@ -309,50 +286,49 @@ public class GameSnd : MonoBehaviour
     {
         GameSnd.Instance.RemoveClone(go);
     }
-	
-	public void SetVolume_bgm()
+
+	// 간편 사용 //GameSnd.Instance.Sound_play("snd_ui_click");
+	public void Sound_play(string _name)
 	{
-		if( kBgm != null )	{
-			kBgm.GetComponent<AudioSource>().volume = fVolume_bgm;
-			//kBgm.audio.Play();
-		}
-	}    
+		AudioClip audioClip = Resources.Load("Sound/" + _name) as AudioClip;
+		//AudioSource audioSource = new AudioSource();
+		AudioSource audioSource = GetComponent<AudioSource>();
+		if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>();
+		//audioSource.PlayOneShot(audioClip);
+		audioSource.clip = audioClip;
+		audioSource.loop = false;
+		audioSource.Play();
+	}
 }
 
 public class CSndInfo : MonoBehaviour
 {
-    public int      iID = 0;
-    public bool     bLoop = false;
+    public int      iID = 0; //고유번호
+	public int		Index = 0; //사운드 인덱스
+	public float	audiolength = 0.0f;
+	public bool     bLoop = false;
     public bool     bRemove = false;
     public float    DeathTime = 0.0f;
-    public int      Index = 0;
-    //public AudioSource kAudioSource = null;
-    public float audiolength = 0.0f;
-
-    void Awake()
-    {
-        //DontDestroyOnLoad(this);
-    }
 
     void Update()
     {
         if (bRemove)
         {
             DeathTime -= Time.deltaTime;
-            if (DeathTime <= 0.0f)
-            {
-                GameSnd.Instance.RemoveClone(gameObject);
-                //Destroy( gameObject );
+            if (DeathTime <= 0.0f) {
+				//Destroy( gameObject );
+				GameSnd.Instance.RemoveClone(gameObject);                
             }
         }
 
-        //if(audio == null)	return;		
-        //playOneShot
-        //if( !bLoop )
-        //	if(!audio.isPlaying)
-        //	{
-        //		Destroy( gameObject );
-        //	}
-    }
+		//// playOneShot
+		//if(audio != null && !bLoop) 
+		//	if(!audio.isPlaying)
+		//	{
+		//		Destroy( gameObject );
+		//	}
+	}
 
 }
+
+

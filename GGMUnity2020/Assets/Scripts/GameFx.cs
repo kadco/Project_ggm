@@ -19,14 +19,11 @@ public class GameFx : MonoBehaviour
 	
 	GameObject kRoot;
 
-	private static GameFx s_Instance = null;
-	
-	public static GameFx Instance
-	{
-		get 
-	    {
-	    	if (s_Instance == null)
-	        {
+
+	private static GameFx s_Instance = null;	
+	public static GameFx Instance{
+		get {
+	    	if (s_Instance == null) {
 	        	s_Instance //= new GameFx();				
 					= FindObjectOfType(typeof(GameFx)) as GameFx;
 	        }
@@ -36,8 +33,7 @@ public class GameFx : MonoBehaviour
 
 	void Awake () 
 	{
-		if(s_Instance != null)
-		{
+		if(s_Instance != null) {
 			//Debug.LogError("Cannot have two instances of GameFx.");
 			return;
 		}
@@ -47,8 +43,7 @@ public class GameFx : MonoBehaviour
         //Debug.Log("GameFx Awake");
 
         kRoot = GameObject.Find("root_fx"); //fx 어태치 포인트를 만들어 놓는다.
-        if (kRoot == null)
-        {
+        if (kRoot == null) {
             Debug.Log("Cannot find root_fx");
             //kRoot = GameObject.CreatePrimitive(PrimitiveType.Cube);
             //kRoot.name = "root_fx";            
@@ -231,11 +226,10 @@ public class GameFx : MonoBehaviour
 	public GameObject PlayFx(string szPrefab, Vector3 pos, float _lifetime = 3.0f )
 	{
 		//Debug.Log("PlayFx : " + szPrefab); 
-
 		GameObject fxCloneGO = AddClone( szPrefab, pos );
 		if(fxCloneGO == null )	return null;
 		
-		CFxInfo kInfo = (CFxInfo)fxCloneGO.GetComponent("CFxInfo");		
+		CFxInfo kInfo = (CFxInfo)fxCloneGO.GetComponent("CFxInfo");
         kInfo.fTime_fx_remove = _lifetime;
 		kInfo.bRemove = true;
 

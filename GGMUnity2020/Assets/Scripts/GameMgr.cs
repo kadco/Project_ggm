@@ -24,6 +24,7 @@ public class GameMgr : MonoBehaviour
         else //만약 씬 이동이 되었는데 그 씬에도 GameMgr이 존재할 수도 있다.
         {
             //Destroy(this.gameObject);
+            return;
         }
     }
 
@@ -37,6 +38,7 @@ public class GameMgr : MonoBehaviour
     {
         
     }
+
 }
 
 
