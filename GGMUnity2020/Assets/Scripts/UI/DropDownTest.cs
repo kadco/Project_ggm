@@ -20,7 +20,7 @@ public class DropDownTest : MonoBehaviour
         if (Input.anyKeyDown) { }            
     }
 
-    private void SetDropdownOptionsExample()// Dropdown 목록 생성
+    private void SetDropdownOptionsExample() // Dropdown 목록 생성
     {
         m_dropdown.options.Clear();
         for (int i = 1; i <= 5; i++)
@@ -31,7 +31,7 @@ public class DropDownTest : MonoBehaviour
         }
     }
 
-    public void SelectButton(int index)// SelectButton을 누름으로써 값 테스트.
+    public void SelectButton(int index) // SelectButton을 누름으로써 값 테스트.
     {
         Debug.Log(index);
         Debug.Log("Dropdown Value: " + m_dropdown.value);
