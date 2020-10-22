@@ -58,3 +58,22 @@ public class JumpCtrl : MonoBehaviour
     }
 
 }
+
+/*
+    // check 점프
+    if (Input.GetKeyDown(KeyCode.Space))
+    {
+        if (!bJump && !bDown) {
+            Jumpstarttime = Time.time; 
+            bJump = true;
+        }
+    }
+    if (bJump)
+    {
+        float jspeed = jumpspeed - (Time.time - Jumpstarttime) * 9.8f; //중력가속도
+        transform.position += Vector3.up * jspeed * Time.deltaTime;
+        if (Time.time >= Jumpstarttime + JumpTime) { bJump = false; }
+    } 
+*/
+
+

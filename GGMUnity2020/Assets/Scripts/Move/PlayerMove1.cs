@@ -37,9 +37,8 @@ public class PlayerMove1 : MonoBehaviour // 키보드 이동 //트랜스폼
         // check 점프
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (!bJump && !bDown)
-            {
-                Jumpstarttime = Time.time;
+            if (!bJump && !bDown) {
+                Jumpstarttime = Time.time; 
                 bJump = true;
             }
         }
