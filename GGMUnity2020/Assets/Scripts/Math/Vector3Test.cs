@@ -29,14 +29,20 @@ public class Vector3Test : MonoBehaviour
         float dist = v3.magnitude;          //길이
         Vector3 dir = v3.normalized;        //방향
 
-        Vector3 v4 = tran1.position * 3;  // 벡터 곱하기 //동일한 방향으로 증가
+        Vector3 v4 = tran1.position * 3;    //벡터 곱하기(스칼라배) //동일한 방향으로 증가
 
         Vector3 dir2 = v3.normalized * 2;                   // 방향 * 초당 이동 거리 = 초당 이동할 거리 벡터
         Vector3 dir3 = v3.normalized * 2 * Time.deltaTime;  // 프레임 기간동안 이동할 거리 벡터
 
-        float dot = Vector3.Dot(tran1.position, tran2.position); print(dot);  //벡터의 내적 //두 백터의 각도, 0이면 직각.
+        //벡터의 내적 //두 백터의 각도, 0이면 직각.
+        tran1.position = new Vector3(0, 0, 1);
+        tran2.position = new Vector3(1, 0, 0);
+        float dot = Vector3.Dot(tran1.position, tran2.position); 
+        print("dot: " + dot);
 
-        Vector3 cross = Vector3.Cross(tran1.position, tran2.position);      //벡터의 외적 //직각인 벡터 찾기 
+        //벡터의 외적 //직각인 벡터 찾기 
+        Vector3 cross = Vector3.Cross(tran1.position, tran2.position);
+        print("cross: " + cross.ToString());
     }
 
     void Update()

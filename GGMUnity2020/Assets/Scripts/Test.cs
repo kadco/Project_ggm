@@ -14,8 +14,6 @@ public class Test : MonoBehaviour
     {
         if(Input.anyKey)
         {
-            //GameSnd.Instance.Sound_play("snd_ui_click");
-            GameSnd.Instance.PlaySound("snd_ui_click");
         }
     }
 }

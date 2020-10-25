@@ -10,13 +10,14 @@ public class ScrollViewTest : MonoBehaviour
     {
         for (int i = 0; i < element.Length; i++)
         {
-            ScrollViewItem item = new ScrollViewItem(); item.uid = i; item.name = "item" + i;
+            ScrollViewItem item = new ScrollViewItem(); 
+            item.uid = i; 
+            item.name = "item" + i;
             element[i].Setup(item, null);
         }
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         

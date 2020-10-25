@@ -6,11 +6,22 @@ public class MathTest : MonoBehaviour
 {
     void Start()
     {
-        //디그리, 라디안
-        float rad = Mathf.Deg2Rad * 180;        print(rad);
-        float deg = Mathf.Rad2Deg * Mathf.PI;   print(deg);
+        //피타고라스 정리  
+        print(Mathf.Pow(4, 2));
+        print(Mathf.Sqrt(16));
+        // (0,0) ~ (4,3) //두점사이의 거리
+        float a = 4; 
+        float b = 3;
+        float c = Mathf.Sqrt(Mathf.Pow(a, 2) + Mathf.Pow(b, 2));
+        print(c);
 
-        //각도롤 위치,방향 만들기
+        //Mathf.PI = 원주/지름 = 반원주/반지름 ,  PI 라디안 = 180도(반지름 1일때)
+
+        //디그리, 라디안
+        float rad = 180 * Mathf.Deg2Rad;        print(rad);
+        float deg = Mathf.PI * Mathf.Rad2Deg;   print(deg);
+
+        //각도로 위치,방향 만들기
         float distance = 1;
         float radian = 45 * Mathf.PI / 180; //라디안값
         float x = Mathf.Cos(radian);
