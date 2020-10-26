@@ -6,9 +6,9 @@ public class TargetFallow : MonoBehaviour
 {
     public Transform target;
     float speed = 1;
+
     void Start()
-    {
-        
+    {        
     }
 
     // Update is called once per frame

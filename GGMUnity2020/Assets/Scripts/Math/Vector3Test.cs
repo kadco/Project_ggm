@@ -10,43 +10,46 @@ using UnityEngine;
 
 public class Vector3Test : MonoBehaviour
 {
-    public Transform tran1;
-    public Transform tran2;
-        
+    public Transform target;
+    Vector3 v1 = new Vector3(1, 0, 0);
+    Vector3 v2 = new Vector3(0, 1, 0);
+
     void Start()
     {
-        tran1.position = new Vector3(0, 0, 0);
-        tran1.position = Vector3.zero;  //Vector3.one;
+        transform.position = new Vector3(0, 0, 0);
+        transform.position = Vector3.zero;  //Vector3.one;
 
-        tran1.forward = Vector3.left;  //전진 방향 //Vector3.forward
 
-        print(tran2.position.magnitude);  //길이 //피타고라스의 정리
+        target.forward = Vector3.left;  //전진 방향 //Vector3.forward
 
-        Vector3 v = tran2.position.normalized; print(v.x + " " + v.y + " " + v.z ); //단위 백터
+        print(target.position.magnitude);  //길이 //피타고라스의 정리
 
-        Vector3 v2 = tran1.position + tran2.position;  //백터 더하기
-        Vector3 v3 = tran2.position - tran1.position;  //백터 빼기 //타겟 - 시작 = 타겟까지의 벡터(길이+방향)
-        float dist = v3.magnitude;          //길이
-        Vector3 dir = v3.normalized;        //방향
+        Vector3 v = target.position.normalized; print(v.x + " " + v.y + " " + v.z ); //단위 백터
+        Vector3 dir = target.position.normalized;        //방향
+        float dist = target.position.magnitude;          //길이
+        print(dist);        
+        
 
-        Vector3 v4 = tran1.position * 3;    //벡터 곱하기(스칼라배) //동일한 방향으로 증가
+        Vector3 v3 = v1 + v2;  //백터 더하기
+        Vector3 v4 = v2 - v1;  //백터 빼기 //타겟 - 시작 = 타겟까지의 벡터(길이+방향)
+        Vector3 v5 = v1 * 3;    //벡터 곱하기(스칼라배) //동일한 방향으로 증가
 
-        Vector3 dir2 = v3.normalized * 2;                   // 방향 * 초당 이동 거리 = 초당 이동할 거리 벡터
-        Vector3 dir3 = v3.normalized * 2 * Time.deltaTime;  // 프레임 기간동안 이동할 거리 벡터
+        Vector3 dir2 = v1.normalized * 2;                   // 방향 * 초당 이동 거리 = 초당 이동할 거리 벡터
+        Vector3 dir3 = v1.normalized * 2 * Time.deltaTime;  // 프레임 기간동안 이동할 거리 벡터
 
         //벡터의 내적 //두 백터의 각도, 0이면 직각.
-        tran1.position = new Vector3(0, 0, 1);
-        tran2.position = new Vector3(1, 0, 0);
-        float dot = Vector3.Dot(tran1.position, tran2.position); 
+        v1 = new Vector3(0, 0, 1);
+        v2 = new Vector3(1, 0, 0);
+        float dot = Vector3.Dot(v1, v2); 
         print("dot: " + dot);
 
         //벡터의 외적 //직각인 벡터 찾기 
-        Vector3 cross = Vector3.Cross(tran1.position, tran2.position);
-        print("cross: " + cross.ToString());
+        Vector3 cross = Vector3.Cross(v1, v2);
+        print("cross: " + cross.ToString());        
     }
 
     void Update()
     {
-        //float dot = Vector3.Dot(tran1.position, tran2.position); print(dot);
+        //float dot = Vector3.Dot(target.position, transform.position); print(dot);
     }
 }

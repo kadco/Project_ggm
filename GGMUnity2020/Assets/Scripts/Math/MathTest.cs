@@ -35,9 +35,9 @@ public class MathTest : MonoBehaviour
         // 좌표로 각 구하기
         Vector3 velocity = new Vector3(1, -1, 0);
         Vector3 direction = velocity.normalized;
-        float degree = Mathf.Atan(velocity.x/velocity.y) * Mathf.Rad2Deg; 
+        float degree = Mathf.Atan(velocity.y/velocity.x) * Mathf.Rad2Deg; 
         print(degree.ToString());
-        //float degree = Mathf.Atan2(velocity.x,velocity.y) * Mathf.Rad2Deg; //0~360
+        //float degree = Mathf.Atan2(velocity.y,velocity.x) * Mathf.Rad2Deg; //0~360
         //transform.rotation = Quaternion.Euler(0, 0, degree);
 
     }
