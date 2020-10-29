@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TargetFallow : MonoBehaviour
 {
-    public Transform target;
-    float speed = 1;
+    public Transform target; 
+    float speed = 3;
 
     void Start()
     {        

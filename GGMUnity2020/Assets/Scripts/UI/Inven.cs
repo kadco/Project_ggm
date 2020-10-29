@@ -8,11 +8,12 @@ public class Inven : MonoBehaviour
     List<Item> ItemList;    //보유아이템
     List<Item> InvenList;   //인벤토리에 보여주는 아이템
 
-    public GameObject[] InvenObject;  //12
+    public GameObject[] InvenObject;  //8
 
     void Start()
     {
         ItemList = new List<Item>();
+
         InvenList = new List<Item>();
 
         //ItemList에 아이템 추가 ---------------------
@@ -41,7 +42,6 @@ public class Inven : MonoBehaviour
             iobj.text.text = "";
             iobj.frame.sprite = Resources.Load<Sprite>("icons/f") as Sprite;
             iobj.image.sprite = Resources.Load<Sprite>("icons/f") as Sprite;
-
             if (i >= InvenList.Count) continue;
             
             Item item = InvenList[i];

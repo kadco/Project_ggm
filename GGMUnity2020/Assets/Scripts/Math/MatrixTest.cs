@@ -9,12 +9,10 @@ public class MatrixTest : MonoBehaviour
     public Text matrixTxt2;
     public Text matrixTxt3;
 
-    void Start()
-    {        
+    void Start() {
     }
 
-    void Update()
-    {
+    void Update() {
         DisplayMatrix();
     }
 
@@ -25,6 +23,4 @@ public class MatrixTest : MonoBehaviour
         matrixTxt2.text = "" + matrix.inverse;
         matrixTxt3.text = "" + matrix.transpose;
     }
-
-
 }
