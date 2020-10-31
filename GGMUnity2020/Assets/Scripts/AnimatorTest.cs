@@ -36,7 +36,7 @@ public class AnimatorTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             anim.speed = 1.0f;
-            anim.Play("death");
+            anim.Play("attack");
             Invoke("SetAnimation", 1.0f);
         }
     }
