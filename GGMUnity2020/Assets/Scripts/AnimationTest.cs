@@ -31,11 +31,7 @@ public class AnimationTest : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
-    //에니메이션 이벤트 
-=======
     //이벤트 처리 함수
->>>>>>> bac4319289bae6ab7d6eb68854afc49db3dd12e8
     public void PrintEvent(string s)
     {
         Debug.Log("PrintEvent: " + s + " called at: " + Time.time);
