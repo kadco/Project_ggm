@@ -19,6 +19,7 @@ public class AnimationTest : MonoBehaviour
     {
     }
 
+    //에니메이션 이벤트 
     public void PrintEvent(string s)
     {
         Debug.Log("PrintEvent: " + s + " called at: " + Time.time);
