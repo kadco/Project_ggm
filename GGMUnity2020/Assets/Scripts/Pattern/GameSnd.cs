@@ -1,11 +1,10 @@
-﻿// You need to "SndInfo.cs"
+﻿using System.Collections;
+using UnityEngine;
+
+// You need to "SndInfo.cs"
 // 'SoundObject' Tags must be declared in the tag manager before using them
 
 //GameSnd.Instance.PlaySound("snd_ui_click");  //사용법
-
-using UnityEngine;
-using System.Collections;
-
 public enum eSound : int
 {
     bgm_main = 101,

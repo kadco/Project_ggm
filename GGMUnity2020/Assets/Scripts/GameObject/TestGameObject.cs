@@ -19,7 +19,7 @@ public class TestGameObject : MonoBehaviour
 
         //객체에서 컴포넌트 찾기
         //Player p = player.GetComponent<Player>();
-        //print(p.nickname);
+        //print( p.nickname );
 
         //만들어진 게임 오브젝트 불러오기 (프리팹)
         go = GameObject.Instantiate(Resources.Load<GameObject>("cube"));

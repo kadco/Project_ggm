@@ -1,6 +1,5 @@
-
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 // fx table index ------------------------------------------
 public enum eFx
