@@ -48,3 +48,64 @@ public class NavigationTest : MonoBehaviour
         
     }
 }
+
+/*
+ // Act -------------------------------------
+public enum eAct // animation + transform + state
+{
+    None,
+    idle,
+    walk,
+    attack,     // target
+    hit,       
+    die,
+    Max
+};
+public eAct kAct_cur;           //액션
+public eAct kAct_old;
+public float fAct_time = 0.0F;   //액션 시간.
+
+public int Act_start()
+{
+    kAct_old = kAct_cur;
+    kAct_cur = _act;
+
+    switch (kAct_cur)
+    {
+        case eAct.appear:			
+			break;
+		case eAct.idle:
+            MoveSpeed = 0.0f;
+            Animation_set("idle");
+			break;
+		case eAct.walk:
+            MoveSpeed = 2.0f;
+            Animation_set("walk");
+			break;
+		case eAct.attack:
+            MoveSpeed = 0.0f;
+            Animation_set("attack");
+            fAct_time = Time.time + 0.5f;  //공격 애니 동작.
+			break;
+    }
+    return 0;
+}
+
+public int Act_update()
+{
+    switch (kAct_cur)
+    {
+        case eAct.appear:
+			Act_start(eAct.idle);
+			break;
+		case eAct.idle:
+			break;
+		case eAct.walk:
+			break;
+		case eAct.attack:
+            if (Time.time >= fAct_time) Act_start(eAct.idle);
+			break;
+    }
+    return 0;
+}
+*/

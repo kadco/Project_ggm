@@ -321,9 +321,21 @@ public class CFxInfo : MonoBehaviour
 }
 
 /*
-        if (Input.GetMouseButtonDown(0))
+    if (Input.GetMouseButtonDown(0))
+    {
+        var worldMousePosition = CGame.Instance.GetRaycastObjectPoint(); 
+	    worldMousePosition.z = 0;
+        GameFx.Instance.PlayFx("Fx/CFX_MagicPoof", worldMousePosition);
+    }
+
+    public Vector3 GetRaycastObjectPoint()
+    {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (true == (Physics.Raycast(ray.origin, ray.direction * 1000, out hit)))
         {
-            var worldMousePosition = CGame.Instance.GetRaycastObjectPoint(); worldMousePosition.z = 0;
-            GameFx.Instance.PlayFx("Fx/CFX_MagicPoof", worldMousePosition);
+            return hit.point;
         }
+        return Vector3.zero;
+    }
 */
