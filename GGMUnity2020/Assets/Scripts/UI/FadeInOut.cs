@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 
-
-//FadeInOut fade = gameObject.GetComponent<FadeInOut>();
-//fade.StartFadeOut();
+//public GameObject go;
+//
+//FadeInOut fade = go.GetComponent<FadeInOut>();
+//fade.StartFadeOut(3);
 
 public class FadeInOut : MonoBehaviour
 {
@@ -24,17 +26,17 @@ public class FadeInOut : MonoBehaviour
     public void StartFadeIn(float time)
     {
         if (isPlaying == true) return;
-        FadeTime = time;        
-        StartCoroutine("fadeinplay");
+        FadeTime = time;
+        StartCoroutine("FadeinPlay");
     }
     public void StartFadeOut(float time)
     {
         if (isPlaying == true) return;
-        FadeTime = time;        
-        StartCoroutine("fadeoutplay");    //코루틴 실행
+        FadeTime = time;
+        StartCoroutine("FadeoutPlay");    //코루틴 실행
     }
 
-    IEnumerator fadeinplay()
+    IEnumerator FadeinPlay()
     {
         isPlaying = true;
         time = 0f; start = 0f; end = 1f;
@@ -50,11 +52,11 @@ public class FadeInOut : MonoBehaviour
         isPlaying = false;
     }
 
-    IEnumerator fadeoutplay()
+    IEnumerator FadeoutPlay()
     {
         isPlaying = true;
         time = 0f; start = 1f; end = 0f;
-        Color fadecolor = fadeImg.color;        
+        Color fadecolor = fadeImg.color;
         fadecolor.a = Mathf.Lerp(start, end, time);
         while (fadecolor.a > 0f)
         {
