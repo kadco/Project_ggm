@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-// SpriteRenderer
+// SpriteRenderer 
 
 public class FadeInOut2 : MonoBehaviour
 {

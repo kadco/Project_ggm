@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//public GameObject go;
+//public GameObject go; 
 //
 //FadeInOut fade = go.GetComponent<FadeInOut>();
 //fade.StartFadeOut(3);
