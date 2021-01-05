@@ -5,14 +5,17 @@ using UnityEngine;
 public class MaterialTest3 : MonoBehaviour
 {
     public Texture texture;
-    Renderer kRenderer;
+    Renderer render;
 
     void Start()
     {
         GameObject go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        kRenderer = go.GetComponent<Renderer>();
+        render = go.GetComponent<Renderer>();
 
-        kRenderer.material.SetTexture("_MainTex", texture);
+        render.material.SetTexture("_MainTex", texture);
+
+        //if (render.material.HasProperty("_Color"))
+        //    render.material.SetColor("_Color", Color.red);
     }
 
     // Update is called once per frame
@@ -21,3 +24,4 @@ public class MaterialTest3 : MonoBehaviour
         
     }
 }
+
