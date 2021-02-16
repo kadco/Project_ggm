@@ -232,7 +232,7 @@ public class ScrollObjectPool : MonoBehaviour
             spawnedGameObject = (GameObject)GameObject.Instantiate(prefab);
 
             // add the PooledObject component to the prefab so we know it came from this pool
-            ShopScrollObject_pool pooledObject = spawnedGameObject.AddComponent<ShopScrollObject_pool>();
+            ScrollObject_pool pooledObject = spawnedGameObject.AddComponent<ScrollObject_pool>();
             pooledObject.pool = this;
         }
 
@@ -248,7 +248,7 @@ public class ScrollObjectPool : MonoBehaviour
     // Return an instance of the prefab to the pool
     public void ReturnObject(GameObject toReturn)
     {
-        ShopScrollObject_pool pooledObject = toReturn.GetComponent<ShopScrollObject_pool>();
+        ScrollObject_pool pooledObject = toReturn.GetComponent<ScrollObject_pool>();
 
         // if the instance came from this pool, return it to the pool
         if (pooledObject != null && pooledObject.pool == this)
@@ -270,7 +270,18 @@ public class ScrollObjectPool : MonoBehaviour
     }
 }
 // a component that simply identifies the pool that a GameObject came from
-public class ShopScrollObject_pool : MonoBehaviour
+public class ScrollObject_pool : MonoBehaviour
 {
     public ScrollObjectPool pool;
 }
+
+/*
+    // 아래부터 추가하기
+    content 의 pivot 을 0 으로 조정
+
+    // 해당 위치로 이동하기  
+    // scrollRect.verticalNormalizedPosition =  컨테츠 위치 / ( 컨텐츠 전체 높이 - 보여지는 영역 높이 )   
+
+Ex) float scrollValue = ( 보여주고 싶은 위치 ) / (scrollRect.content.rect.height -  scrollRect.GetComponent<RectTransform>().rect.height);
+    scrollRect.verticalNormalizedPosition = scrollValue; 
+ */
