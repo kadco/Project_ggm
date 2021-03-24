@@ -80,19 +80,25 @@ public class PlayerMove2 : MonoBehaviour // 키보드 이동 //물리가 적용�
 
     void OnCollisionEnter(Collision other)
     {
-        //print("player OnCollisionEnter " + other.transform.name);
+        print("player OnCollisionEnter " + other.transform.name);
         if (other.transform.name.Contains("ground"))
         {
             isGround = true;
             isJumping = false;
         }
-    }    
+    }
+
+    void OnTriggerEnter(Collider other) //충돌판정에는 양쪽다 collider 필요, 한쪽엔 rigibody
+    {
+        print("OnTriggerEnter " + other.name);
+    }
+
 
     //void FireRocket()
     //{
     //    Rigidbody rocketClone = (Rigidbody)Instantiate(rocket, firepoint.position, firepoint.rotation);
     //    rocketClone.velocity = transform.forward * rocket_speed;
-                
+
     //    //rocketClone.GetComponent<Rocket>().DoSomething();
     //}
 }
